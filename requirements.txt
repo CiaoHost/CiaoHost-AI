@@ -1,5 +1,3 @@
-tk
-google.generativeai
-json
-pillow
-webbrowser
+google-generativeai>=0.3.0
+python-dotenv>=1.0.0
+streamlit>=1.32.0
