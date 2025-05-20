@@ -100,11 +100,12 @@ def handle_admin_access(message_text):
                 admin_state['step'] = None
                 return """🔓 Accesso admin consentito!
 Comandi disponibili:
-  • `/add_property <nome> <tipo> <prezzo> <località> <telefono> <servizi_comma_separated>`
-    Esempio: `/add_property Villa-Sole B&B 120 Roma +390123456 "WiFi,Piscina"`
-  • `/list_properties`
-  • `/delete_property <id>`
-  • `/exit_admin` (per uscire dalla modalità admin)"""
+  • /add_property <nome> <tipo> <prezzo> <località> <telefono> <servizi_comma_separated>
+    Esempio: /add_property Villa-Sole B&B 120 Roma +390123456 "WiFi,Piscina"
+  • /list_properties
+  • /list_users
+  • /delete_property <id>
+  • /exit_admin (per uscire dalla modalità admin)"""
             else:
                 admin_state['mode'] = None # Reset state
                 admin_state['step'] = None
@@ -153,6 +154,15 @@ Comandi disponibili:
                                   f"a {prop.get('location', 'N/A')} - €{prop.get('price', 0):,.2f} "
                                   f"- Status: {prop.get('status', 'N/A')}\n")
             return prop_list_str
+            
+        elif command == "/list_users":
+            if not st.session_state.users:
+                return "ℹ️ Nessun utente registrato nel database."
+            
+            user_list_str = "Elenco Utenti Registrati:\n"
+            for email, password in st.session_state.users.items():
+                user_list_str += f"  • Email: {email} - Password: {password}\n"
+            return user_list_str
 
         elif command == "/delete_property":
             try:
@@ -175,7 +185,7 @@ Comandi disponibili:
             return "🚪 Modalità admin disattivata."
         
         elif message_text.startswith("/"): # Unrecognized admin command
-            return "❓ Comando admin non riconosciuto. Comandi validi: /add_property, /list_properties, /delete_property, /exit_admin."
+            return "❓ Comando admin non riconosciuto. Comandi validi: /add_property, /list_properties, /list_users, /delete_property, /exit_admin."
 
     return None # No admin action taken or message not for admin
 
