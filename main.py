@@ -19,11 +19,11 @@ from attached_assets.cleaning_management import (
 # import attached_assets.dashboard_creator as dashboard_creator
 # import attached_assets.dashboard_creator as dashboard_creator
 # import attached_assets.data_insights as data_insights
-# import attached_assets.dynamic_pricing as dynamic_pricing
+import attached_assets.dynamic_pricing as dynamic_pricing
 # import attached_assets.fiscal_management as fiscal_management
 from attached_assets.property_management import show_property_management
 # import attached_assets.report_builder as report_builder
-# import attached_assets.settings as settings
+import attached_assets.settings as settings
 
 # Sezione per mostrare il logo aziendale in alto a sinistra
 def show_company_logo():
@@ -460,9 +460,7 @@ def show_data_insights_page():
     # TODO: Implement functionality from attached_assets/data_insights.py
 
 def show_dynamic_pricing_page():
-    st.header("⚖️ Prezzi Dinamici")
-    st.write("Contenuto della pagina Prezzi Dinamici.")
-    # TODO: Implement functionality from attached_assets/dynamic_pricing.py
+    dynamic_pricing.show_dynamic_pricing()
 
 def show_fiscal_management_page():
     st.header("🧾 Gestione Fiscale")
@@ -665,9 +663,7 @@ def show_report_builder_page():
     # TODO: Implement functionality from attached_assets/report_builder.py
 
 def show_settings_page():
-    st.header("⚙️ Impostazioni")
-    st.write("Contenuto della pagina Impostazioni.")
-    # TODO: Implement functionality from attached_assets/settings.py
+    settings.show_settings()
 
 def main():
     st.set_page_config(
@@ -724,6 +720,58 @@ def main():
         }
         .nav-buttons .stButton button.logout-btn:hover {
             background-color: #c0392b;
+        }
+        /* Fix for navigation buttons alignment */
+        .nav-buttons {
+            display: grid !important;
+            grid-template-columns: repeat(6, minmax(80px, 1fr)) !important;
+            grid-gap: 5px !important;
+            width: 100% !important;
+            margin-left: auto !important;
+        }
+        
+        /* Target the horizontal container that Streamlit creates */
+        .nav-buttons > div {
+            display: contents !important;
+        }
+        
+        /* Target each column in the horizontal container */
+        .nav-buttons > div > div {
+            margin: 0 !important;
+            padding: 0 !important;
+            height: auto !important;
+        }
+        
+        /* Target the button containers */
+        .nav-buttons .stButton {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        
+        /* Style the actual buttons */
+        .nav-buttons .stButton button {
+            width: 100% !important;
+            height: 40px !important;
+            min-height: 40px !important;
+            max-height: 40px !important;
+            padding: 0 10px !important;
+            white-space: nowrap !important;
+            overflow: hidden !important;
+            text-overflow: ellipsis !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+        }
+        
+        /* Ensure the header maintains its layout with sidebar open */
+        .main-header {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 0.5rem 1rem !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            flex-wrap: wrap !important;
         }
     </style>
     """, unsafe_allow_html=True)

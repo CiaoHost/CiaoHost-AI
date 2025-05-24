@@ -1,0 +1,72 @@
+{
+  "seasons": [
+    {
+      "id": "1",
+      "name": "Alta",
+      "start_date": "2025-07-01",
+      "end_date": "2025-08-31",
+      "price_modifier": 50,
+      "notes": "Estate - Alta stagione"
+    },
+    {
+      "id": "2",
+      "name": "Media",
+      "start_date": "2025-04-01",
+      "end_date": "2025-06-30",
+      "price_modifier": 20,
+      "notes": "Primavera - Media stagione"
+    },
+    {
+      "id": "3",
+      "name": "Media",
+      "start_date": "2025-09-01",
+      "end_date": "2025-10-31",
+      "price_modifier": 20,
+      "notes": "Autunno - Media stagione"
+    },
+    {
+      "id": "4",
+      "name": "Bassa",
+      "start_date": "2025-11-01",
+      "end_date": "2025-03-31",
+      "price_modifier": -20,
+      "notes": "Inverno - Bassa stagione (escluse festività)"
+    },
+    {
+      "id": "5",
+      "name": "Alta",
+      "start_date": "2025-12-20",
+      "end_date": "2025-01-06",
+      "price_modifier": 40,
+      "notes": "Festività natalizie"
+    }
+  ],
+  "price_modifiers": {
+    "weekdays": {
+      "monday": 0,
+      "tuesday": 0,
+      "wednesday": 0,
+      "thursday": 0,
+      "friday": 10,
+      "saturday": 20,
+      "sunday": 10
+    },
+    "length_of_stay": {
+      "single_night": 0,
+      "two_nights": 0,
+      "weekend": 0,
+      "week": -10,
+      "month": -25
+    },
+    "lead_time": {
+      "last_minute": -10,
+      "standard": 0,
+      "early_bird": 0
+    },
+    "occupancy": {
+      "low": -10,
+      "standard": 0,
+      "high": 5
+    }
+  }
+}
